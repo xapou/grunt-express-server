@@ -1,18 +1,18 @@
 {
-  "name": "grunt-express-server",
-  "description": "Grunt task for running an Express Server that works great with LiveReload + Watch/Regarde",
-  "version": "0.5.3",
-  "homepage": "https://github.com/ericclemmons/grunt-express-server",
+  "name": "grunt-express-server-v8",
+  "description": "Grunt Express Server with fix for node 8.0",
+  "version": "0.6.0",
+  "homepage": "https://github.com/xapou/grunt-express-server",
   "author": {
     "name": "Eric Clemmons",
     "email": "eric@smarterspam.com"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/ericclemmons/grunt-express-server.git"
+    "url": "git://github.com/xapou/grunt-express-server.git"
   },
   "bugs": {
-    "url": "https://github.com/ericclemmons/grunt-express-server/issues"
+    "url": "https://github.com/xapou/grunt-express-server/issues"
   },
   "license": "MIT",
   "main": "Gruntfile.js",
