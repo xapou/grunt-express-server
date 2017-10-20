@@ -41,11 +41,9 @@ module.exports = function(grunt, target) {
 
       // For some weird reason, on Windows the process.env stringify produces a "Path"
       // member instead of a "PATH" member, and grunt chokes when it can't find PATH.
-      if (!backup.PATH) {
-        if (backup.Path) {
+      if (!backup.PATH && backup.Path) {
           backup.PATH = backup.Path;
           delete backup.Path;
-        }
       }
 
       grunt.log.writeln('Starting '.cyan + (options.background ? 'background' : 'foreground') + ' Express server');
@@ -68,14 +66,15 @@ module.exports = function(grunt, target) {
 
       // Set debug mode for node-inspector
       // Based on https://github.com/joyent/node/blob/master/src/node.cc#L2903
+      var dbg = process.version > 'v7' ? '--inspect' : '--debug';
       if (options.debug === true) {
-        options.opts.unshift('--debug');
+        options.opts.unshift(dbg);
       } else if (!isNaN(parseInt(options.debug, 10))) {
-        options.opts.unshift('--debug=' + options.debug);
+        options.opts.unshift(dbg + '=' + options.debug);
       } else if (options.breakOnFirstLine === true) {
-        options.opts.unshift('--debug-brk');
+        options.opts.unshift(dbg + '-brk');
       } else if (!isNaN(parseInt(options.breakOnFirstLine, 10))) {
-        options.opts.unshift('--debug-brk=' + options.breakOnFirstLine);
+        options.opts.unshift(dbg + '-brk=' + options.breakOnFirstLine);
       }
 
       if ((options.debug || options.breakOnFirstLine) && options.cmd === 'coffee') {
